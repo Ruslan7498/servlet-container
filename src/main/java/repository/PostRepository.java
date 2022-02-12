@@ -14,8 +14,8 @@ public class PostRepository {
         return new ArrayList<>(mapPosts.values());
     }
 
-    public Optional<Post> getById(long id) {
-        return Optional.ofNullable(mapPosts.get(id));
+    public Post getById(long id) {
+        return mapPosts.get(id);
     }
 
     public synchronized Post save(Post post) throws IOException {

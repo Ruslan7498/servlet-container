@@ -16,7 +16,7 @@ public class MainServlet extends HttpServlet {
     private final String DELETE = "DELETE";
     private final String DELIMITER = "/";
     private final String API_POSTS = "/api/posts";
-    private final String API_POSTS_D = "/api/posts\\d+";
+    private final String API_POSTS_D = "/api/posts/\\d+";
 
     @Override
     public void init() {
@@ -26,7 +26,7 @@ public class MainServlet extends HttpServlet {
     }
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void service(HttpServletRequest req, HttpServletResponse resp) {
         //resp.getWriter().print("Ok");
         //resp.setStatus(HttpServletResponse.SC_OK);
         // если деплоились в root context, то достаточно этого
@@ -58,7 +58,7 @@ public class MainServlet extends HttpServlet {
             controller.all(resp);
         }
         if (path.matches(API_POSTS_D)) {
-            final long id = Long.parseLong(path.substring(path.lastIndexOf(DELIMITER)));
+            long id = Long.parseLong(path.substring(path.lastIndexOf(DELIMITER) + 1));
             controller.getById(id, resp);
         }
     }
@@ -71,7 +71,7 @@ public class MainServlet extends HttpServlet {
 
     public void methodDelete(HttpServletResponse resp, String path) throws IOException {
         if (path.matches(API_POSTS_D)) {
-            final long id = Long.parseLong(path.substring(path.lastIndexOf(DELIMITER)));
+            final long id = Long.parseLong(path.substring(path.lastIndexOf(DELIMITER) + 1));
             controller.removeById(id, resp);
         }
     }
