@@ -1,5 +1,5 @@
 package ru.netology.config;
-
+/*
 import ru.netology.controller.PostController;
 import ru.netology.repository.PostRepository;
 import ru.netology.service.PostService;
@@ -21,3 +21,4 @@ public class JavaConfig {
         return new PostRepository();
     }
 }
+ */

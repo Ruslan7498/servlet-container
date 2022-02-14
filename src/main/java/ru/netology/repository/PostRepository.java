@@ -1,12 +1,12 @@
 package ru.netology.repository;
 
 import ru.netology.model.Post;
-//import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.util.*;
 
-//@Repository
+@Repository
 public class PostRepository {
     private final Map<Long, Post> mapPosts = new HashMap<>();
     private long id = 1;
